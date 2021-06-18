@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XFDelivery.Views.Secondmessage"
+             BackgroundColor="#FA4A0C">
+    <StackLayout Orientation="Vertical">
+        <Image Source="arrived.png" WidthRequest="250"
+                Margin="0,40,0,0"/>
+        <StackLayout>
+            <Label
+                HorizontalOptions="Center"
+                Margin="35,40,35,0" 
+                TextColor="White" 
+                Text=" The Fastest In Delivery Food "
+                FontSize="Title"
+                FontAttributes="Bold">
+            </Label>
+            <Label
+                HorizontalOptions="Center"
+                Text="our job is to filling your tummy with delicious food and fast delivery"
+                Margin="35,0,35,50"
+                FontSize="Subtitle"
+                FontAttributes="None"
+                TextColor="White">
+
+            </Label>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            <Frame BackgroundColor="White" CornerRadius="100" WidthRequest="-30" HeightRequest="-30" ></Frame>
+            <Frame BackgroundColor="White" CornerRadius="100" WidthRequest="-30" HeightRequest="-30"></Frame>
+            <Frame BackgroundColor="#06623B" CornerRadius="100" WidthRequest="-30" HeightRequest="-30"></Frame>
+
+        </StackLayout>
+        <StackLayout>
+            <Button 
+                Clicked="Button_Clicked"
+                BackgroundColor="White"
+                Margin="50,30" 
+                Text="Let's Continue"
+                TextColor="#FA4A0C"
+                CornerRadius="19"
+                FontAttributes="Bold">
+
+            </Button>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

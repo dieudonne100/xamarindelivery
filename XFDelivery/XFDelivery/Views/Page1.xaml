@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:fonticons="clr-namespace:XFDelivery.Fonts"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:PanCake="clr-namespace:XamUIDemo.Renderers" 
+             xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows" xmlns:local="clr-namespace:XFDelivery.Renderers" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             mc:Ignorable="d"
+             x:Class="XFDelivery.Views.Page1">
+    <ContentPage.Content>
+        <shadows:Shadows CornerRadius="40" Shades="{shadows:SingleShade BlurRadius=22, Offset='5,2', Opacity=0.3, Color={StaticResource colorGray6F}}">
+
+            <PanCake:PancakeView Margin="0,50,0,0"
+                        HorizontalOptions="CenterAndExpand"
+                        HeightRequest="110"
+                        VerticalOptions="CenterAndExpand"         
+                        BackgroundColor="White"
+                        CornerRadius="25"
+                        HasShadow="False"
+                        WidthRequest="350">
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                    <shadows:Shadows Margin="15,0,0,0" CornerRadius="40" Shades="{shadows:SingleShade BlurRadius=20, Offset='5,2', Opacity=0.1, Color= Silver}">
+                        <PanCake:PancakeView CornerRadius="360" HasShadow="True">
+                            <Image BackgroundColor="AntiqueWhite" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="80" Source="bgImage1" Margin="10,15,0,0"/>
+                        </PanCake:PancakeView>
+                    </shadows:Shadows>
+                    <Label Grid.Row="0" Grid.Column="1" Text="name" Margin="10,20,0,0" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="price" Margin="10,60,0,0" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+                    <Label     Grid.Row="0" 
+                                Grid.Column="1"
+                                Margin="130,70,0,0"
+                                FontFamily="FontPoppinsMedium"
+                                FontSize="12"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Binding Quant}"
+                                VerticalOptions="Center" />
+                    
+                    <Grid  Grid.Row="0" Grid.Column="1" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Margin="130,20,0,0" 
+                        BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" WidthRequest="80" HeightRequest="50" HorizontalOptions="StartAndExpand">
+                        <pancake:PancakeView
+                            Padding="0"
+                            BorderColor="{StaticResource colorGray6F}"
+                            BorderThickness="1"
+                            CornerRadius="26"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            WidthRequest="120">
+                            <Grid ColumnDefinitions="*, auto, *" ColumnSpacing="0">
+                                <Label
+                                    Grid.Column="0"
+                                    FontFamily="FontFontello"
+                                    FontSize="28"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static fonticons:FontIcons.Minus}"
+                                    TextColor="{StaticResource colorGray6F}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DeleteQuantCommand}" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <BoxView
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource colorGray6F}"
+                                    HorizontalOptions="Center"
+                                    Opacity="0.6"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="2" />
+                                <Label
+                                    Grid.Column="2"
+                                    FontFamily="FontFontello"
+                                    FontSize="28"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static fonticons:FontIcons.Plus}"
+                                    TextColor="{StaticResource colorGray6F}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddQuantCommand}" NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                
+                            </Grid>
+                            
+                        </pancake:PancakeView>
+                        
+                    </Grid>
+                
+                </Grid>
+
+            </PanCake:PancakeView>
+        </shadows:Shadows>
+    </ContentPage.Content>
+</ContentPage>

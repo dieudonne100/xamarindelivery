@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fonticons="clr-namespace:XFDelivery.Fonts"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:PanCake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:pancake="clr-namespace:XamUIDemo.Renderers" xmlns:shadows="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="XFDelivery.Views.CartPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <!-- Main Structure-->
+            <Grid RowSpacing="0" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+                <!-- Price block-->
+                <!-- Frame with price information-->
+                <Frame Grid.Row="0" Margin="30,30,30,0" HeightRequest="50" >
+                    <Grid RowDefinitions="Auto,Auto,Auto" HorizontalOptions="Center">
+                        <Label Grid.Row="0" Text="$181.94"  Margin="0,-5,0,0"/>
+                        <Label Grid.Row="1" Text="September 24, 7:32pm" HorizontalOptions="Center"/>
+                        <Line  Grid.Row="2" />
+                    </Grid>
+                </Frame>
+               
+                <!-- Indicator Bar-->
+                <PanCake:PancakeView Grid.Row="0" CornerRadius="20,0,0,30" TranslationY="30" TranslationX="30" HorizontalOptions="Start" VerticalOptions="Start" WidthRequest="100" HeightRequest="35">
+                    <Grid RowDefinitions="*" BackgroundColor="{StaticResource colorOrange}" Padding="15,5">
+                        <Label Grid.Row="0" Text="OFFLINE" FontAttributes="Bold" TextColor="White" FontSize="15"/>
+                    </Grid>
+                </PanCake:PancakeView>
+                <!-- 2. Details & Total-->
+                <PanCake:PancakeView BackgroundColor="White" CornerRadius="20,0,0,30" Grid.Row="1" Margin="30,-15,30,0" HeightRequest="392">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                        <!-- Product list-->
+                        <CollectionView Grid.Row="1" Grid.Column="0" Margin="0,-15,0,12" Grid.ColumnSpan="2" VerticalOptions="StartAndExpand"
+                                     VerticalScrollBarVisibility="Never"
+                                     HeightRequest="392"
+                                     ItemsSource="{Binding Items}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <shadows:Shadows CornerRadius="40" Shades="{shadows:SingleShade BlurRadius=22, Offset='5,2', Opacity=0.3, Color={StaticResource colorGray6F}}">
+
+                                        <PanCake:PancakeView Margin="0,50,0,0"
+                        HorizontalOptions="CenterAndExpand"
+                        HeightRequest="110"
+                        VerticalOptions="CenterAndExpand"         
+                        BackgroundColor="White"
+                        CornerRadius="25"
+                        HasShadow="False"
+                        WidthRequest="350">
+                                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                                <shadows:Shadows Margin="15,0,0,0" CornerRadius="40" Shades="{shadows:SingleShade BlurRadius=20, Offset='5,2', Opacity=0.1, Color= Silver}">
+                                                    <PanCake:PancakeView CornerRadius="360" HasShadow="True">
+                                                        <Image BackgroundColor="AntiqueWhite" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HeightRequest="80" WidthRequest="80" Source="bgImage1" Margin="10,15,0,0"/>
+                                                    </PanCake:PancakeView>
+                                                </shadows:Shadows>
+                                                <Label Grid.Row="0" Grid.Column="1" Text="name" Margin="10,20,0,0" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+                                                <Label Grid.Row="0" Grid.Column="1" Text="price" Margin="10,60,0,0" FontAttributes="Bold" FontSize="Title" TextColor="Black"/>
+                                                <Label     Grid.Row="0" 
+                                Grid.Column="1"
+                                Margin="130,70,0,0"
+                                FontFamily="FontPoppinsMedium"
+                                FontSize="12"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Binding Quant}"
+                                VerticalOptions="Center" />
+
+                                                <Grid  Grid.Row="0" Grid.Column="1" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto" Margin="130,20,0,0" 
+                        BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" WidthRequest="80" HeightRequest="50" HorizontalOptions="StartAndExpand">
+                                                    <pancake:PancakeView
+                            Padding="0"
+                            BorderColor="{StaticResource colorGray6F}"
+                            BorderThickness="1"
+                            CornerRadius="26"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            WidthRequest="120">
+                                                        <Grid ColumnDefinitions="*, auto, *" ColumnSpacing="0">
+                                                            <Label
+                                    Grid.Column="0"
+                                    FontFamily="FontFontello"
+                                    FontSize="28"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static fonticons:FontIcons.Minus}"
+                                    TextColor="{StaticResource colorGray6F}"
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center">
+                                                                <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding DeleteQuantCommand}" NumberOfTapsRequired="1" />
+                                                                </Label.GestureRecognizers>
+                                                            </Label>
+                                                            <BoxView
+                                    Grid.Column="1"
+                                    BackgroundColor="{StaticResource colorGray6F}"
+                                    HorizontalOptions="Center"
+                                    Opacity="0.6"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="2" />
+                                                            <Label
+                                        Grid.Column="2"
+                                        FontFamily="FontFontello"
+                                        FontSize="28"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{x:Static fonticons:FontIcons.Plus}"
+                                        TextColor="{StaticResource colorGray6F}"
+                                        VerticalOptions="FillAndExpand"
+                                        VerticalTextAlignment="Center">
+                                                                <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding AddQuantCommand}" NumberOfTapsRequired="1" />
+                                                                </Label.GestureRecognizers>
+                                                            </Label>
+
+                                                        </Grid>
+
+                                                    </pancake:PancakeView>
+
+                                                </Grid>
+
+                                            </Grid>
+
+                                        </PanCake:PancakeView>
+                                    </shadows:Shadows>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <!-- Amount of products -->
+                       
+
+                        <Line  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,15"
+                           />
+
+
+                    </Grid>
+                    </PanCake:PancakeView >
+                <!-- Rounded borders-->
+                <Ellipse Grid.Row="1" HorizontalOptions="Start"  TranslationY="-322" TranslationX="20"  Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+                <Ellipse Grid.Row="1" HorizontalOptions="End" TranslationY="-322" TranslationX="-20" Fill="#efefef" VerticalOptions="End" HeightRequest="26" WidthRequest="26" StrokeThickness="0"/>
+
+                <!-- Timeline-->
+                <Frame Grid.Row="2" Margin="30,20,30,0" HeightRequest="113">
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*">
+                        <Label Grid.Row="2" Grid.Column="0" Text="Subtotal" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold" Margin="0,-15,0,10"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Discount" FontSize="16" TextColor="#4f4f4f" FontAttributes="Bold"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="2%"       BackgroundColor="Silver" Padding="2" FontSize="10" VerticalTextAlignment="Center" HorizontalOptions="Center" TranslationX="10" TranslationY="-2"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="$185.65"  FontSize="18" FontAttributes="Bold" Margin="0,-15,0,10" HorizontalOptions="End"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="-$3.71"   FontSize="18" FontAttributes="Bold" TextColor="{StaticResource colorOrange}" HorizontalOptions="End"/>
+                        
+                        <Line Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Margin="0,15,0,0"
+                               X1="260"
+                               StrokeThickness="0.5"
+                               Stroke="Silver"/>
+                        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Text="Maritime Square, Tierra Verde" HorizontalOptions="Center"/>
+                    </Grid>
+                </Frame>
+                <!-- Paymnet buttons-->
+                <Label Grid.Row="3" HorizontalTextAlignment="Center" Margin="20,10,20,0" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Have problem about this bill?" FontSize="15" FontAttributes="Bold" TextColor="Silver"/>
+                            <Span Text=" Customer service" TextColor="#4e4e4e" FontAttributes="Bold" FontSize="15"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid Grid.Row="4" ColumnDefinitions="*,*" Padding="15">
+                    <Button Grid.Column="0"  ImageSource="Arrow" Text="Pay Later" TextColor="Black" FontAttributes="Bold" BackgroundColor="#e4e4e4" CornerRadius="10" HeightRequest="50" Margin="10,5,10,20"/>
+                    <Button Grid.Column="1" Text="Pay now" TextColor="White" FontAttributes="Bold" BackgroundColor="Black" CornerRadius="10" Margin="5,5,10,20" HeightRequest="50"/>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
